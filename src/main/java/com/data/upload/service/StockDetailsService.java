@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -60,10 +58,10 @@ public class StockDetailsService {
 
 	repo.saveAll(stockDetails);
 }
-	public ResponseEntity<List<StockDetails>> getQuaterlyStock(int number, String stock)
+	public List<StockDetails> getQuaterlyStock(int number, String stock)
 			throws Exception {
 		List<StockDetails> StockDetails = repo.find(number, stock);
-		return new ResponseEntity<>(StockDetails, HttpStatus.OK);
+		return StockDetails;
 	}
 	
 	public void addRecord(@RequestBody StockDetails stockData) throws Exception {

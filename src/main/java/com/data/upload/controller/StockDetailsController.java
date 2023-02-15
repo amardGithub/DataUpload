@@ -3,6 +3,7 @@ package com.data.upload.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,21 +23,21 @@ public class StockDetailsController {
 	private StockDetailsService service;
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(@RequestParam("file") MultipartFile file) throws Exception {
+	public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws Exception {
 		service.uploadFile(file);
-		return "Data upload successful!";
+		return new ResponseEntity<>("Data upload successful!",HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/quaterlyStock", method = RequestMethod.GET)
 	public ResponseEntity<List<StockDetails>> quaterlyStock(@RequestParam("quarter") int number,
 			@RequestParam("stock") String stock) throws Exception {
-		ResponseEntity<List<StockDetails>> stockData = service.getQuaterlyStock(number, stock);
-		return stockData;
+		List<StockDetails> stockData = service.getQuaterlyStock(number, stock);
+		return new ResponseEntity<>(stockData,HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/addRecord", method = RequestMethod.POST)
-	public String addRecord(@RequestBody StockDetails stockData) throws Exception {
+	public ResponseEntity<String> addRecord(@RequestBody StockDetails stockData) throws Exception {
 		service.addRecord(stockData);
-		return "Record added successfully!";
+		return new ResponseEntity<>("Record added successfully!",HttpStatus.CREATED);
 	}
 }
