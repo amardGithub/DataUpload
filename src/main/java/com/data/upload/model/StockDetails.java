@@ -1,6 +1,5 @@
 package com.data.upload.model;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -62,7 +61,8 @@ public class StockDetails {
 	@Column(name="days_to_next_dividend")
 	private long days_to_next_dividend;
 	
-	
+	@Column(name="percent_return_next_dividend")
+	private double percent_return_next_dividend;
 	public StockDetails() {
 		super();
 	}
@@ -163,6 +163,4 @@ public class StockDetails {
 	public void setPercent_return_next_dividend(double percent_return_next_dividend) {
 		this.percent_return_next_dividend = percent_return_next_dividend;
 	}
-	private double percent_return_next_dividend;
-
 }
