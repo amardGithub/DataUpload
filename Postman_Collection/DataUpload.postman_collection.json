@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "cda4d937-87f2-4cf3-852c-cc78ebaf9305",
+		"name": "DataUpload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/v1/upload",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/amard/OneDrive/Documents/dow_jones_csv.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/v1/quaterlyStock?quarter=1&stock=AA",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "quarter",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "stock",
+						"value": "AA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/v1/quaterlyStock?quarter=1&stock=AA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"quaterlyStock"
+					],
+					"query": [
+						{
+							"key": "quarter",
+							"value": "1"
+						},
+						{
+							"key": "stock",
+							"value": "AA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/v1/addRecord",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"quarter\": 2,\r\n        \"stock\": \"AA\",\r\n        \"date\": \"2011-07-01\",\r\n        \"open\": \"17.13\",\r\n        \"high\": \"17.8\",\r\n        \"low\": \"17.02\",\r\n        \"close\": \"17.47\",\r\n        \"volume\": 103320396,\r\n        \"percent_change_price\": 1.98482,\r\n        \"percent_change_volume_over_last_wk\": 8.131838957,\r\n        \"previous_weeks_volume\": 92550392,\r\n        \"next_weeks_open\": \"17.42\",\r\n        \"next_weeks_close\": \"17.92\",\r\n        \"percent_change_next_weeks_price\": 2.87026,\r\n        \"days_to_next_dividend\": 41,\r\n        \"percent_return_next_dividend\": 0.0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/addRecord",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"addRecord"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
